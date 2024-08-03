@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='styless.css') }}">
+
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="registration-box">
+            <h1 class="title" id="dynamic-title">Cleanse Your Spirit</h1>
+            <div class="symbol">
+                <img src="cross.png" alt="Cross Symbol">
+            </div>
+            <form method="post">
+                <div class="input-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" required>
+                </div>
+                <div class="input-group">
+                    <label for="occupation">Occupation</label>
+                    <select name="occupation" id="occupation" required>
+                        <option value="" disabled selected>Select your occupation</option>
+                        <option value="Label Executive">Label Executive</option>
+                        <option value="Promoter">Promoter</option>
+                        <option value="Booking Agent">Booking Agent</option>
+                        <option value="Follower">Follower</option>
+                        <option value="A&R">A&R</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <button type="submit" class="register-button">Enter</button>
+            </form>
+
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phrases = [
+                "Cleanse Your Spirit",
+                "Renew Your Faith",
+                "Embrace Purity",
+                "Find Your Peace",
+                "Rejuvenate Your Soul",
+                "Begin Your Transformation",
+                "Purify Your Heart",
+                "Discover True Peace",
+                "Heal Your Spirit",
+                "Start Your Journey to Wholeness"
+            ];
+
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            document.getElementById('dynamic-title').textContent = randomPhrase;
+        });
+    </script>
+    
+</body>
+</html>

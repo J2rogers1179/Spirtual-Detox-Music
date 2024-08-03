@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Ozlee - Spiritual Detox{% endblock %}
+
+{% block hero_title %}Ozlee{% endblock %}
+
+{% block content %}
+    <section id="about" class="section">
+        <h2>About</h2>
+        <p>Biography and information about Ozlee, a prominent artist in the Spiritual Detox movement.</p>
+    </section>
+
+    <section id="music" class="section">
+        <h2>Music</h2>
+        <p>Listen to Ozlee's latest tracks below:</p>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6S8RpIv8R0rW3Dm1dHGLEw?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </section>
+
+    <section id="videos" class="section">
+        <h2>Videos</h2>
+        <p>Watch Ozlee's latest music videos below:</p>
+        <div class="video-wrapper">
+            <div id="player"></div>
+        </div>
+    </section>
+
+    <section id="photos" class="section">
+        <h2>Photos</h2>
+        <img src="{{ url_for('static', filename='IMG_1751.jpg') }}" alt="Main photo of Ozlee">
+        <img src="{{ url_for('static', filename='IMG_7185.png') }}" alt="Additional photo of Ozlee">
+        <p>A gallery showcasing Ozlee's performances and personal moments.</p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>For booking and other inquiries, find contact information or use the contact form below.</p>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <p>&copy; {{ year }} Ozlee. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://open.spotify.com" target="_blank">
+                <img src="{{ url_for('static', filename='icons/spotify.png') }}" alt="Spotify">
+            </a>
+            <a href="https://music.apple.com/us/artist/ozlee/1586439701" target="_blank">
+                <img src="{{ url_for('static', filename='icons/apple-music.png') }}" alt="Apple Music">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="{{ url_for('static', filename='icons/youtube.png') }}" alt="YouTube">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // Load the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Create an <iframe> (and YouTube player) after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: '5zGDZzs9Ptg', // Replace with your video ID
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        // The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            // Optionally, you can do something when the player is ready
+        }
+
+        // The API calls this function when the player's state changes.
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                // Optionally, you can do something when the video starts playing
+            }
+        }
+    </script>
+{% endblock %}
